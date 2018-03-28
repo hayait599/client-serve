@@ -6,11 +6,17 @@ class ChattingPage extends Component {
 
   render() {
     return (
-      <div className="content">
-        <div className="chat-container">
-          <ChatContent />
-          <ChatInput />
+      <div className="chat-container">
+        <div className="header">
+          <div className="header-logo">
+            <i className="material-icons md-48" style={{ color: '#ffffff' }} >
+              mode comment
+              </i>
+            <h6 className="heafer-text">Chatting Room</h6>
+          </div>
         </div>
+        <ChatContent />
+        <ChatInput />
       </div>
     );
   }

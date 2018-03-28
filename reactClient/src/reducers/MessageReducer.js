@@ -21,4 +21,4 @@ export const MessageReducer = createReducer({
     ...state,
     typingFlag: payload
   }),
-}, { text: '', messages: [], key: '', typingFlag: false });
+}, { text: '', messages: [], key: '', typingFlag: { key: false, user: '' } });

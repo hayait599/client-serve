@@ -5,12 +5,12 @@ import { HomePage, ChattingPage } from './index';
 import { receiverMessage, typingState } from './../actions/index';
 
 class App extends Component {
-  
+
   componentDidMount() {
     this.props.receiverMessage();
     this.props.typingState();
   }
-  
+
   render() {
     return (
       <BrowserRouter >

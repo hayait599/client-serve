@@ -1,17 +1,25 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { ValidationForm } from './../components/index';
+import { Form } from './../components/index';
 
 class HomePage extends Component {
 
   render() {
     return (
       <div className="content">
-        <div className="card">
-          <div className="title">
-            <h2>Chatting Room</h2>
+        <div className="home-cotent">
+          <div className="left-side">
+            <img
+              src="./../images/logo.png"
+              alt="can not be found"
+              width="400"
+              height="300"
+              className="logoImage"
+            />
           </div>
-          <ValidationForm history={this.props.history} />
+          <div className="right-side">
+            <Form history={this.props.history} />
+          </div>
         </div>
       </div>
     );
@@ -22,4 +30,4 @@ const mapStateToProps = (state) => {
     data: state.posts
   };
 };
-export default connect(mapStateToProps, {})(HomePage);
+export default connect(mapStateToProps)(HomePage);

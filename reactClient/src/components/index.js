@@ -1,10 +1,10 @@
-import ValidationForm from './ValidationForm';
+import Form from './Form';
 import ChatInput from './ChatInput';
 import ChatContent from './ChatContent';
 import Message from './Message';
 
 export {
-  ValidationForm,
+  Form,
   ChatInput,
   ChatContent,
   Message

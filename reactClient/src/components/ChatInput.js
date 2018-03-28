@@ -23,18 +23,17 @@ class ChatInput extends Component {
     this.props.typing(flag);
     setTimeout(() => {
       this.timeoutFunction();
-    }, 3000);
+    }, 2000);
   }
   render() {
     return (
-      <form className="form" onSubmit={this.onSubmit.bind(this)}>
+      <form className="form chat-form" onSubmit={this.onSubmit.bind(this)}>
         <textarea
           className="chatInput"
-          rows="4" 
+          rows="1" 
           onChange={this.onChange.bind(this)}
           value={this.props.textInput}
           onKeyUp={this.handleKeyUp.bind(this)}
-          //onKeyDown={this.handleKeyDown.bind(this)}
         />
         <input type="submit" value="Send" className="btn btn-info" />
       </form>

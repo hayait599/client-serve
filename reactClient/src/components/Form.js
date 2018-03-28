@@ -3,7 +3,7 @@ import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { storeKey } from './../actions/index';
 
-class ValidationForm extends Component {
+class Form extends Component {
 
   onSubmit(values) {
     this.props.history.push('/chattingRoom');
@@ -14,6 +14,7 @@ class ValidationForm extends Component {
     const formClass = `form-group ${showError ? 'has-danger' : ''}`;
     return (
       <div className={formClass}>
+        <h6> User Name </h6>
         <input
           type="text"
           className="form-control"
@@ -29,6 +30,7 @@ class ValidationForm extends Component {
     const { handleSubmit } = this.props;
     return (
       <form className="form" onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+        <p className="text-logo"> Member Login </p>
         <Field
           label="Enter Key"
           name="key"
@@ -42,7 +44,7 @@ class ValidationForm extends Component {
 const validate = (values) => {
   const errors = {};
   if (!values.key) {
-    errors.key = 'Please enter the key';
+    errors.key = 'Please enter your name';
   }
   return errors;
 };
@@ -50,5 +52,5 @@ export default reduxForm({
   validate,
   form: 'ValidationForm'
 })(
-  connect(null, { storeKey })(ValidationForm)
+  connect(null, { storeKey })(Form)
 );

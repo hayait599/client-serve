@@ -10,19 +10,19 @@ class ChatContent extends Component {
       const messageKey = message.messages.key;
       if (this.props.myKey === messageKey) {
         return (
-          <Message 
-            key={key} 
+          <Message
+            key={key}
             text={text}
-            messageAlign='' 
+            messageAlign={false}
             sendBy={'Me'}
           />
         );
       }
       return (
-        <Message 
-          key={key} 
-          text={text} 
-          messageAlign='align-right' 
+        <Message
+          key={key}
+          text={text}
+          messageAlign
           sendBy={messageKey}
         />
       );
@@ -30,16 +30,23 @@ class ChatContent extends Component {
   }
   renderFooter() {
     if (this.props.typingFlag) {
-      return (
-        <div>someone is typing</div>        
-      );
+      if (this.props.typingFlag.key) {
+        if (this.props.myKey === this.props.typingFlag.user) {
+          return <div />;
+        }
+        return (
+          <div className="">{this.props.typingFlag.user} is typing</div>
+        );
+      }
     }
     return <div />;
   }
   render() {
     return (
       <div className="chat-content">
-        {this.renderChat()}
+        <div className="chat-body">
+          {this.renderChat()}
+        </div>
         {this.renderFooter()}
       </div>
     );

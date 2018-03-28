@@ -51,7 +51,8 @@ function* fetchMessage() {
 function* typingMessage(action) {
   try {
     const flag = action.payload;
-    socket.emit('typing', flag);
+    const chatKey = yield select(getKey);
+    socket.emit('typing', { key: flag, user: chatKey });
     socket.emit('add');
   } catch (error) {
     yield console.log(error);
@@ -69,6 +70,7 @@ function* fetchTypingState() {
     });
     while (true) {
       const { data } = yield take(channel);
+      console.log(data);
       yield put(storeTypingState(data));
     }
   } catch (error) {
