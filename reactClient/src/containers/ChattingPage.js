@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { ChatContent, ChatInput } from './../components/index';
-//import { Link } from 'react-router-dom';
 
 class ChattingPage extends Component {
 
@@ -17,7 +16,6 @@ class ChattingPage extends Component {
   }
 }
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     data: state.posts
   };

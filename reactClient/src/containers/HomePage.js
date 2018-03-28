@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { ValidationForm } from './../components/index';
-//import { Link } from 'react-router-dom';
 
 class HomePage extends Component {
 
@@ -19,7 +18,6 @@ class HomePage extends Component {
   }
 }
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     data: state.posts
   };

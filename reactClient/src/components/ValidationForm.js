@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
-//import { addPost } from './../actions/index';
+import { connect } from 'react-redux';
+import { storeKey } from './../actions/index';
 
 class ValidationForm extends Component {
 
   onSubmit(values) {
-    //pass value key to saga
-    console.log(values);
     this.props.history.push('/chattingRoom');
+    this.props.storeKey(values.key);
   }
-
   renderField(field) {
     const showError = field.meta.error && field.meta.touched;
     const formClass = `form-group ${showError ? 'has-danger' : ''}`;
@@ -26,7 +25,6 @@ class ValidationForm extends Component {
       </div>
     );
   }
-
   render() {
     const { handleSubmit } = this.props;
     return (
@@ -41,15 +39,16 @@ class ValidationForm extends Component {
     );
   }
 }
-
 const validate = (values) => {
   const errors = {};
   if (!values.key) {
     errors.key = 'Please enter the key';
-  } 
+  }
   return errors;
 };
 export default reduxForm({
   validate,
   form: 'ValidationForm'
-})(ValidationForm);
+})(
+  connect(null, { storeKey })(ValidationForm)
+);

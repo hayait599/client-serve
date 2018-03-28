@@ -1,8 +1,8 @@
 import { all, fork } from 'redux-saga/effects';
-import { postSaga } from './postSaga';
+import { chatSaga } from './chatSaga';
 
 export default function* rootSaga() {
   yield all([
-    fork(postSaga),
+    fork(chatSaga),
   ]);
 }

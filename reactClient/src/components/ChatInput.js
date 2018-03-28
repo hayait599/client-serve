@@ -1,15 +1,29 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { storeMessage, storeInput } from './../actions/index';
+import { sendMessage, storeInput, storeMessage, typing } from './../actions/index';
+
+let flag = false;
 
 class ChatInput extends Component {
   
   onSubmit(event) {
     event.preventDefault(); 
-    this.props.storeMessage(this.props.textInput);
+    this.props.sendMessage(this.props.textInput);
+    this.props.storeInput('');
   }
   onChange(event) {
     this.props.storeInput(event.target.value);
+  }
+  timeoutFunction() {
+    flag = false;
+    this.props.typing(flag);
+  }
+  handleKeyUp() {
+    flag = true;
+    this.props.typing(flag);
+    setTimeout(() => {
+      this.timeoutFunction();
+    }, 3000);
   }
   render() {
     return (
@@ -19,6 +33,8 @@ class ChatInput extends Component {
           rows="4" 
           onChange={this.onChange.bind(this)}
           value={this.props.textInput}
+          onKeyUp={this.handleKeyUp.bind(this)}
+          //onKeyDown={this.handleKeyDown.bind(this)}
         />
         <input type="submit" value="Send" className="btn btn-info" />
       </form>
@@ -26,9 +42,13 @@ class ChatInput extends Component {
   }
 }
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     textInput: state.message.text
   };
 };
-export default connect(mapStateToProps, { storeMessage, storeInput })(ChatInput);
+export default connect(mapStateToProps, { 
+  sendMessage, 
+  storeInput, 
+  storeMessage,
+  typing
+})(ChatInput);
