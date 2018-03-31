@@ -1,0 +1,66 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3%;
+}
+.card {
+  background-color: beige;
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3% 2%;
+}
+.title {
+  background-color: beige;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 1%;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 1%;
+  margin-top: 2%;
+}
+.chat-container {
+  background-color: green;
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  align-items: center;
+  justify-content: center;
+  padding: 1%;
+  margin-top: 2%;
+}
+.chat-content {
+ background-color: ivory;
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  height: 500px;
+}
+.chatInput {
+  resize:none;
+  width: 90%;
+}
+.message-content {
+  display: flex;
+}
+.message-content > div {
+  width: 50%;
+  margin: 1% 1%;
+  background: lime;
+  overflow-wrap: break-word;
+ 
+}
